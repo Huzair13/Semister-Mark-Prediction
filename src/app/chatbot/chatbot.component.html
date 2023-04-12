@@ -1,0 +1,24 @@
+<div style="margin: 30px;" id="outer">
+    <h1 style="text-align: center;" id="heading">ChatBot</h1>
+  
+    <div class="card">
+      <div class="card-body">
+        <div *ngFor="let data of textList; let i=index">
+          <p *ngIf="i === 0 || textList[i-1].text !== ''"><strong>You:</strong> {{data.text}}</p>
+          <p *ngIf="data.response"><strong>Bot:</strong> {{data.response}}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="input-group mb-3">
+          <input type="text" [(ngModel)]="textList[textList.length-1].text" class="form-control" placeholder="Add Your Text Here">
+          <div class="input-group-append">
+            <button type="button" (click)="generateText(textList[textList.length-1])" class="btn btn-primary">Enter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  <router-outlet></router-outlet>
+  
